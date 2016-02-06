@@ -1,0 +1,24 @@
+{{paper-input label="Filter" value=filter}}
+
+{{#paper-content class="md-whiteframe-z1 list-demo"}}
+  {{#paper-list}}
+    {{#each filteredPeople as |item|}}
+      {{#paper-item class="md-3-line"}}
+        <img src={{item.avatar}}
+          alt="{{item.firstName}} {{item.lastName}}"
+          class="md-avatar">
+        <div class="md-list-item-text">
+          <h3>{{item.firstName}} {{item.lastName}}</h3>
+          <h4>{{item.jobType}}</h4>
+          <address>
+            <strong>Address</strong><br>
+            {{item.addressStreet}}<br>
+            {{item.addressCity}}, {{item.addressState}} {{item.addressZip}}<br>
+            <abbr title="Phone">P:</abbr> {{item.phoneNumber}}
+          </address>
+        </div>
+      {{/paper-item}}
+      {{paper-divider}}
+    {{/each}}
+  {{/paper-list}}
+{{/paper-content}}

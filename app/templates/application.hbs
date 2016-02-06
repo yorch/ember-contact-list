@@ -1,3 +1,41 @@
-<h2 id="title">Welcome to Ember</h2>
+{{#paper-nav-container}}
+  {{#paper-sidenav class="md-sidenav-left md-whiteframe-z2" locked-open="gt-sm"}}
+    {{#paper-toolbar}}
+      <div class="md-toolbar-tools">
+        <div class="logo">
+          <strong>Contact List</strong>
+        </div>
+      </div>
+    {{/paper-toolbar}}
 
-{{outlet}}
+    {{#paper-content}}
+      {{#paper-list}}
+        {{#paper-item action="transitionTo" param="index"}}Introduction{{/paper-item}}
+        {{#paper-item action="transitionTo" param="index"}}Another link{{/paper-item}}
+      {{/paper-list}}
+    {{/paper-content}}
+  {{/paper-sidenav}}
+
+  <div layout="column" tabindex="-1" role="main" flex>
+    {{#paper-toolbar}}
+      <div class="md-toolbar-tools">
+        {{#paper-sidenav-toggle as |toggle|}}
+          {{#paper-button target=toggle action="toggleMenu" icon-button=true}}{{paper-icon "menu"}}{{/paper-button}}
+        {{/paper-sidenav-toggle}}
+        <span class="md-breadcrumb-page">People</span>
+      </div>
+    {{/paper-toolbar}}
+
+    {{#paper-content class="md-padding"}}
+      {{#paper-button
+        raised=true
+        primary=true
+        action="saveAll"
+        target=component}}Add{{/paper-button}}
+
+      {{contact-list people=model}}
+
+      {{outlet}}
+    {{/paper-content}}
+  </div>
+{{/paper-nav-container}}
